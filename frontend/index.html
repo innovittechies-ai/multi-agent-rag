@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document Desk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="bar">
+    <div class="brand">
+      <p class="brand-kicker">Document Desk</p>
+      <h1>Questions across written files and spreadsheets</h1>
+    </div>
+    <form id="settings-form" class="connect">
+      <label for="api-base">API</label>
+      <input id="api-base" name="api-base" type="url" placeholder="https://your-host" required>
+      <button type="submit">Connect</button>
+      <p id="health" class="health" role="status">Not connected</p>
+    </form>
+  </header>
+
+  <div class="workspace">
+    <aside class="pane library" aria-labelledby="library-title">
+      <div class="pane-head">
+        <h2 id="library-title">Library</h2>
+      </div>
+      <form id="upload-form" class="upload">
+        <label for="file">PDF, Word, Excel, or text</label>
+        <input id="file" name="file" type="file" accept=".pdf,.docx,.xlsx,.txt,application/pdf" multiple>
+        <button type="submit">Add files</button>
+        <p id="upload-status" class="note" role="status"></p>
+      </form>
+      <ul id="documents" class="files"></ul>
+    </aside>
+
+    <main class="pane work" aria-labelledby="work-title">
+      <div id="stage" class="stage">
+        <div id="empty-answer" class="empty">
+          <h2 id="work-title">Ask the desk</h2>
+          <p>Upload a written file and a spreadsheet. Then ask something that needs both, such as what the policy requires and whether the numbers meet it.</p>
+        </div>
+        <article id="answer" class="answer" hidden>
+          <h2>Answer</h2>
+          <p id="answer-text"></p>
+          <h3>Citations</h3>
+          <ol id="sources"></ol>
+        </article>
+      </div>
+      <form id="ask-form" class="composer">
+        <label for="question">Question</label>
+        <div class="composer-row">
+          <textarea id="question" name="question" rows="2" placeholder="What does the policy require, and do the numbers meet it?" required></textarea>
+          <button type="submit">Ask</button>
+        </div>
+        <p id="ask-status" class="note" role="status"></p>
+      </form>
+    </main>
+
+    <aside class="pane agents" aria-labelledby="agents-title">
+      <div class="pane-head">
+        <h2 id="agents-title">Agents</h2>
+      </div>
+      <p class="note agents-note">The librarian searches. The reader and the analyst do not write the answer. The reviewer does.</p>
+      <ol id="trace" class="trace"></ol>
+    </aside>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
